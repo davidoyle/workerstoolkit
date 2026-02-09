@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import FeedbackWidget from './FeedbackWidget';
 
 const Layout = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,6 +30,7 @@ const Layout = () => {
     { label: 'Tools', path: '/tools' },
     { label: 'Precedents', path: '/precedents' },
     { label: 'Submit', path: '/submit' },
+    { label: 'Start', path: '/start' },
   ];
 
   return (
@@ -102,6 +104,8 @@ const Layout = () => {
       <main className="relative">
         <Outlet />
       </main>
+
+      <FeedbackWidget />
 
       {/* Footer */}
       <footer className="border-t border-[#F3EFE6]/10 px-6 lg:px-[8vw] py-8 bg-[#0B3C43]">

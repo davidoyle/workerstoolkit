@@ -10,6 +10,7 @@ import GlossaryPage from './pages/GlossaryPage';
 import EmailTemplatesPage from './pages/EmailTemplatesPage';
 import CollectiveActionPage from './pages/CollectiveActionPage';
 import PatternsPage from './pages/PatternsPage';
+import StartPage from './pages/StartPage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="email-templates" element={<EmailTemplatesPage />} />
           <Route path="collective-action" element={<CollectiveActionPage />} />
           <Route path="patterns" element={<PatternsPage />} />
+          <Route path="start" element={<StartPage />} />
         </Route>
       </Routes>
     </Router>
