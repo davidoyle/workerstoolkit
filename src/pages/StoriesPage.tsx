@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Clock, Brain, Shield, Briefcase, Trophy, Search, Filter } from 'lucide-react';
 
 const StoriesPage = () => {
@@ -27,7 +28,7 @@ const StoriesPage = () => {
       title: 'My employer changed their story.',
       category: 'Retaliation',
       preview: 'First they said I was job-attached. Then they said I quit. The Board accepted both versions without questioning the contradiction.',
-      fullStory: 'After my back injury, my employer initially said they would accommodate my restrictions and that I remained job-attached. Two months later, when WorkSafeBC asked about modified duties, my employer claimed I had "voluntarily resigned." The case manager accepted this new version without asking me for my side or questioning the complete reversal. I had emails proving I never quit—those were ignored.',
+      fullStory: 'After my back injury, my employer initially said they would accommodate my restrictions and that I remained job-attached. Two months later, when WorkSafeBC asked about modified duties, my employer claimed I had "voluntarily resigned." The case manager accepted this new version without asking me for my side or questioning the complete reversal. I had emails proving I never quit — those were ignored.',
       outcome: 'Still fighting. WCAT appeal filed.',
       date: '2024',
     },
@@ -35,7 +36,7 @@ const StoriesPage = () => {
       title: 'Three years to get the MRI.',
       category: 'Delays',
       preview: 'I knew something was wrong. They kept saying "soft tissue injury." The MRI showed a torn meniscus and cartilage damage.',
-      fullStory: 'From day one, I told them my knee felt unstable. The physio noted clicking and giving way. WorkSafeBC said it was a "soft tissue strain" and would resolve in 6-8 weeks. When it didn\'t, they sent me to their medical advisor who never examined me—just reviewed files and said "no objective findings." My GP finally ordered an MRI privately after three years of me limping around. It showed a complex meniscal tear and significant cartilage loss.',
+      fullStory: 'From day one, I told them my knee felt unstable. The physio noted clicking and giving way. WorkSafeBC said it was a "soft tissue strain" and would resolve in 6–8 weeks. When it didn\'t, they sent me to their medical advisor who never examined me — just reviewed files and said "no objective findings." My GP finally ordered an MRI privately after three years of me limping around. It showed a complex meniscal tear and significant cartilage loss.',
       outcome: 'MRI confirmed injury. Currently fighting for surgery approval.',
       date: '2023',
     },
@@ -43,7 +44,7 @@ const StoriesPage = () => {
       title: 'I was labeled non-cooperative.',
       category: 'Retaliation',
       preview: 'I asked questions about my file. Suddenly there was a note saying I was "difficult" and "aggressive." That label followed me through every subsequent decision.',
-      fullStory: 'I noticed inconsistencies in my claim file—dates that didn\'t match, missing medical reports. When I pointed these out and asked for corrections, the case manager flagged my file as "client conduct concern." Every subsequent decision referenced my "attitude" and "non-compliance." The actual medical evidence became secondary to this behavioral label.',
+      fullStory: 'I noticed inconsistencies in my claim file — dates that didn\'t match, missing medical reports. When I pointed these out and asked for corrections, the case manager flagged my file as "client conduct concern." Every subsequent decision referenced my "attitude" and "non-compliance." The actual medical evidence became secondary to this behavioral label.',
       outcome: 'File note still there. Affecting credibility in appeals.',
       date: '2024',
     },
@@ -58,13 +59,13 @@ const StoriesPage = () => {
     {
       title: 'Still waiting for wage loss.',
       category: 'Delays',
-      preview: 'Six months since my injury. Bills are piling up. Every call is "still under review." I\'m facing eviction.',
-      fullStory: 'I was injured in July. It\'s now January. My claim was accepted for medical benefits but wage loss has been "under review" for six months. I\'ve submitted every document they asked for—pay stubs, tax returns, bank statements. Each time I call, I get a different case manager and a different story. My rent is three months behind. I\'m borrowing money from family just to eat.',
+      preview: 'Six months since my injury. Bills are piling up. Every call is "still under review." Facing eviction.',
+      fullStory: 'I was injured in July. It\'s now January. My claim was accepted for medical benefits but wage loss has been "under review" for six months. I\'ve submitted every document they asked for — pay stubs, tax returns, bank statements. Each time I call, I get a different case manager and a different story. My rent is three months behind. I\'m borrowing money from family just to eat.',
       outcome: 'No resolution. Considering MLA involvement.',
       date: '2025',
     },
     {
-      title: 'Return to work became a nightmare.',
+      title: 'Return to work became a trap.',
       category: 'Return to work',
       preview: 'They said modified duties were available. When I showed up, my supervisor had never heard of them.',
       fullStory: 'WorkSafeBC approved a gradual return-to-work plan with specific restrictions. My employer signed off on it. But when I arrived on my first day back, my supervisor said he had no instructions about modified duties and put me on my regular heavy-lifting tasks. When I reminded him of my restrictions, he said I was "being difficult" and sent me home. WorkSafeBC then cut my benefits for "refusing suitable work."',
@@ -74,7 +75,7 @@ const StoriesPage = () => {
     {
       title: 'Mental health claim denied as "employment decision."',
       category: 'Mental health',
-      preview: 'They said my depression was caused by a "legitimate employment decision"—being transferred against my will to a toxic department.',
+      preview: 'They said my depression was caused by a "legitimate employment decision" — being transferred against my will to a toxic department.',
       fullStory: 'After 10 years in my position, I was suddenly transferred to a department with a known toxic culture. No explanation given. Within months, I developed severe depression and anxiety. My psychiatrist wrote that the transfer and subsequent workplace harassment were the direct causes. WorkSafeBC denied my claim under s.5.1(1)(c), saying the transfer was a "legitimate employment decision" and therefore excluded.',
       outcome: 'Appealed to WCAT. Citing A1900037.',
       date: '2024',
@@ -83,7 +84,7 @@ const StoriesPage = () => {
 
   const filteredStories = stories.filter((story) => {
     const matchesFilter = activeFilter === 'All' || story.category === activeFilter;
-    const matchesSearch = 
+    const matchesSearch =
       story.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       story.preview.toLowerCase().includes(searchQuery.toLowerCase()) ||
       story.fullStory.toLowerCase().includes(searchQuery.toLowerCase());
@@ -91,134 +92,163 @@ const StoriesPage = () => {
   });
 
   return (
-    <div className="pt-24 pb-16 px-6 lg:px-[8vw] bg-[#F3EFE6] min-h-screen">
-      {/* Header */}
-      <div className="mb-8">
-        <span className="eyebrow mb-4 block text-[#0B3C43]">Story Archive</span>
-        <h1 className="headline-lg text-[#0B3C43] mb-4">
-          Read what workers are facing.
-        </h1>
-        <p className="body-text text-[#0B3C43]/70 max-w-[640px]">
-          These are real experiences from injured workers in BC. Names and identifying 
-          details have been removed to protect privacy.
+    <div style={{ backgroundColor: 'var(--bg)' }}>
+      <div className="px-6 lg:px-[8vw] pt-10 pb-16">
+        {/* Header */}
+        <div className="mb-8 max-w-2xl">
+          <p className="eyebrow mb-3">Worker stories</p>
+          <h1 className="headline-lg mb-4" style={{ color: 'var(--text)' }}>
+            What workers are facing.
+          </h1>
+          <p className="body-text" style={{ color: 'var(--text-2)' }}>
+            Real experiences from injured workers in BC. Names and identifying details have been removed.
+          </p>
+        </div>
+
+        {/* Search and filter */}
+        <div className="mb-8 space-y-3">
+          <div className="relative max-w-md">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--text-3)' }} />
+            <input
+              type="text"
+              placeholder="Search stories..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 rounded-lg text-sm"
+              style={{
+                backgroundColor: 'var(--surface)',
+                border: '1px solid var(--border)',
+                color: 'var(--text)',
+                fontFamily: 'Inter, sans-serif',
+                outline: 'none',
+              }}
+              onFocus={(e) => {
+                (e.target as HTMLElement).style.borderColor = 'var(--accent)';
+                (e.target as HTMLElement).style.boxShadow = '0 0 0 3px var(--accent-light)';
+              }}
+              onBlur={(e) => {
+                (e.target as HTMLElement).style.borderColor = 'var(--border)';
+                (e.target as HTMLElement).style.boxShadow = 'none';
+              }}
+            />
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <Filter size={14} style={{ color: 'var(--text-3)' }} />
+            {filters.map((filter) => {
+              const Icon = filter.icon;
+              return (
+                <button
+                  key={filter.label}
+                  onClick={() => setActiveFilter(filter.label)}
+                  className={`filter-chip ${activeFilter === filter.label ? 'active' : ''}`}
+                >
+                  {Icon && <Icon size={13} className="mr-1.5" />}
+                  {filter.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <p className="text-sm mb-6" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+          {filteredStories.length} {filteredStories.length === 1 ? 'story' : 'stories'}
         </p>
-      </div>
 
-      {/* Search and Filter */}
-      <div className="mb-8 space-y-4">
-        {/* Search */}
-        <div className="relative max-w-md">
-          <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0B3C43]/40" />
-          <input
-            type="text"
-            placeholder="Search stories..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 rounded-xl bg-white border border-[#0B3C43]/15 text-[#0B3C43] placeholder:text-[#0B3C43]/40 focus:outline-none focus:border-[#D4A03A]"
-          />
-        </div>
+        {/* Stories grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          {filteredStories.map((story, index) => {
+            const categoryColor = story.category === 'WCAT win'
+              ? 'var(--success)'
+              : story.outcome.toLowerCase().includes('denied') || story.outcome.toLowerCase().includes('cut')
+              ? 'var(--attention)'
+              : 'var(--text-3)';
 
-        {/* Filters */}
-        <div className="flex flex-wrap items-center gap-2">
-          <Filter size={16} className="text-[#0B3C43]/50 mr-2" />
-          {filters.map((filter) => {
-            const Icon = filter.icon;
             return (
-              <button
-                key={filter.label}
-                onClick={() => setActiveFilter(filter.label)}
-                className={`filter-chip ${activeFilter === filter.label ? 'active' : ''}`}
+              <article
+                key={index}
+                className="rounded-xl border p-5"
+                style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}
               >
-                {Icon && <Icon size={14} className="mr-2" />}
-                {filter.label}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Results count */}
-      <p className="body-text text-[#0B3C43]/50 text-sm mb-6">
-        Showing {filteredStories.length} {filteredStories.length === 1 ? 'story' : 'stories'}
-      </p>
-
-      {/* Stories Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {filteredStories.map((story, index) => {
-          const FilterIcon = filters.find(f => f.label === story.category)?.icon || Briefcase;
-          const Icon = FilterIcon;
-          
-          return (
-            <article
-              key={index}
-              className="card-light group"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div className="w-10 h-10 rounded-lg bg-[#0B3C43]/10 flex items-center justify-center group-hover:bg-[#D4A03A]/15 transition-colors">
-                  <Icon size={20} className="text-[#0B3C43] group-hover:text-[#D4A03A] transition-colors" />
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-[#0B3C43]/50">
+                <div className="flex items-center justify-between mb-4">
+                  <span
+                    className="text-xs font-medium px-2 py-1 rounded"
+                    style={{
+                      backgroundColor: 'var(--surface-alt)',
+                      color: 'var(--text-2)',
+                      fontFamily: 'Inter, sans-serif',
+                    }}
+                  >
                     {story.category}
                   </span>
-                  <span className="font-mono text-[10px] text-[#0B3C43]/40">
+                  <span className="font-mono text-xs" style={{ color: 'var(--text-3)' }}>
                     {story.date}
                   </span>
                 </div>
-              </div>
-              
-              <h3 className="font-heading font-bold text-xl text-[#0B3C43] mb-3 group-hover:text-[#D4A03A] transition-colors">
-                {story.title}
-              </h3>
-              
-              <p className="body-text text-[#0B3C43]/70 mb-4">
-                {story.preview}
-              </p>
-              
-              <div className="border-t border-[#0B3C43]/10 pt-4 mb-4">
-                <p className="body-text text-[#0B3C43]/60 text-sm leading-relaxed">
-                  {story.fullStory}
+
+                <h3 className="font-bold text-lg mb-3" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+                  {story.title}
+                </h3>
+
+                <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif' }}>
+                  {story.preview}
                 </p>
-              </div>
-              
-              <div className="flex items-start gap-3 bg-[#0B3C43]/5 rounded-xl p-4">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#D4A03A] mt-2 flex-shrink-0" />
-                <div>
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-[#0B3C43]/50 block mb-1">
-                    Outcome
-                  </span>
-                  <span className="body-text text-[#0B3C43] text-sm">
-                    {story.outcome}
-                  </span>
+
+                <div
+                  className="pt-4 mb-4"
+                  style={{ borderTop: '1px solid var(--border)' }}
+                >
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif' }}>
+                    {story.fullStory}
+                  </p>
                 </div>
-              </div>
-            </article>
-          );
-        })}
-      </div>
 
-      {/* Empty state */}
-      {filteredStories.length === 0 && (
-        <div className="text-center py-16">
-          <p className="body-text text-[#0B3C43]/50">
-            No stories match your search. Try different keywords or filters.
-          </p>
+                <div
+                  className="flex items-start gap-3 rounded-lg p-3"
+                  style={{ backgroundColor: 'var(--bg)' }}
+                >
+                  <div
+                    className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2"
+                    style={{ backgroundColor: categoryColor }}
+                  />
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-wide mb-0.5" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+                      Outcome
+                    </p>
+                    <p className="text-sm" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+                      {story.outcome}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
-      )}
 
-      {/* Submit CTA */}
-      <div className="mt-16 border-t border-[#0B3C43]/10 pt-12">
-        <div className="text-center max-w-xl mx-auto">
-          <h3 className="font-heading font-bold text-2xl text-[#0B3C43] mb-4">
-            Have a story to share?
-          </h3>
-          <p className="body-text text-[#0B3C43]/70 mb-6">
-            Your experience can help others prepare, push back, and feel less alone. 
-            We remove all identifying information.
-          </p>
-          <a href="/submit" className="btn-dark inline-flex">
-            Submit your story
-          </a>
+        {filteredStories.length === 0 && (
+          <div className="text-center py-16">
+            <p className="text-sm" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+              No stories match your search. Try different keywords or filters.
+            </p>
+          </div>
+        )}
+
+        {/* Submit CTA */}
+        <div
+          className="mt-14 pt-10"
+          style={{ borderTop: '1px solid var(--border)' }}
+        >
+          <div className="max-w-xl">
+            <h3 className="font-bold text-xl mb-3" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+              Have a story to share?
+            </h3>
+            <p className="body-text mb-5" style={{ color: 'var(--text-2)' }}>
+              Your experience can help others prepare, push back, and understand what they're dealing with. We remove all identifying information before publishing.
+            </p>
+            <Link to="/submit" className="btn-primary">
+              Submit your story
+            </Link>
+          </div>
         </div>
       </div>
     </div>

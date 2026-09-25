@@ -135,96 +135,130 @@ const GlossaryPage = () => {
   );
 
   return (
-    <div className="pt-24 pb-16 px-6 lg:px-[8vw] bg-[#0B3C43] min-h-screen">
-      {/* Header */}
-      <div className="mb-8">
-        <span className="eyebrow mb-4 block">Glossary</span>
-        <h1 className="headline-lg text-[#F3EFE6] mb-4">
-          WorkSafeBC Terms & Tactics
-        </h1>
-        <p className="body-text text-[#F3EFE6]/70 max-w-[640px]">
-          Understanding the language is half the battle. These are the key terms 
-          you'll encounter—and what they really mean for your claim.
-        </p>
-      </div>
-
-      {/* Search */}
-      <div className="relative max-w-md mb-8">
-        <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#F3EFE6]/40" />
-        <input
-          type="text"
-          placeholder="Search terms..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-12 pr-4 py-3 rounded-xl bg-[#F3EFE6]/5 border border-[#F3EFE6]/15 text-[#F3EFE6] placeholder:text-[#F3EFE6]/40 focus:outline-none focus:border-[#D4A03A]"
-        />
-      </div>
-
-      {/* Results count */}
-      <p className="body-text text-[#F3EFE6]/50 text-sm mb-6">
-        {filteredTerms.length} {filteredTerms.length === 1 ? 'term' : 'terms'}
-      </p>
-
-      {/* Terms Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        {filteredTerms.map((item, index) => (
-          <div key={index} className="card group">
-            <div className="flex items-start justify-between mb-3">
-              <h3 className="font-heading font-bold text-lg text-[#F3EFE6] group-hover:text-[#D4A03A] transition-colors">
-                {item.term}
-              </h3>
-              <span className="font-mono text-[10px] text-[#D4A03A] bg-[#D4A03A]/10 px-2 py-1 rounded">
-                {item.section}
-              </span>
-            </div>
-            <p className="body-text text-[#F3EFE6]/70 text-sm mb-3">
-              {item.definition}
-            </p>
-            <div className="flex items-start gap-2 bg-[#F3EFE6]/5 rounded-lg p-3">
-              <AlertCircle size={14} className="text-[#D4A03A] mt-0.5 flex-shrink-0" />
-              <p className="body-text text-[#F3EFE6]/60 text-xs">
-                <strong>Real impact:</strong> {item.impact}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Empty state */}
-      {filteredTerms.length === 0 && (
-        <div className="text-center py-16">
-          <p className="body-text text-[#F3EFE6]/50">
-            No terms match your search. Try different keywords.
+    <div style={{ backgroundColor: 'var(--bg)' }}>
+      <div className="px-6 lg:px-[8vw] pt-10 pb-16">
+        {/* Header */}
+        <div className="mb-8 max-w-2xl">
+          <p className="eyebrow mb-3">Glossary</p>
+          <h1 className="headline-lg mb-4" style={{ color: 'var(--text)' }}>
+            Know what they're saying.
+          </h1>
+          <p className="body-text" style={{ color: 'var(--text-2)' }}>
+            Understanding the language is half the battle. These are the key terms you'll encounter and what they actually mean for your claim.
           </p>
         </div>
-      )}
 
-      {/* Reference */}
-      <div className="mt-16 border border-[#D4A03A]/30 rounded-[28px] p-6 lg:p-8 bg-[#D4A03A]/5">
-        <div className="flex items-start gap-4">
-          <BookOpen size={24} className="text-[#D4A03A] flex-shrink-0" />
-          <div>
-            <h3 className="font-heading font-bold text-lg text-[#F3EFE6] mb-2">
-              Full Act Reference
-            </h3>
-            <p className="body-text text-[#F3EFE6]/70 text-sm mb-4">
-              For the complete Workers Compensation Act, visit the official BC Laws website. 
-              Understanding the actual legislation is powerful—it shows you what WorkSafeBC 
-              is supposed to do, not just what they tell you.
-            </p>
-            <a
-              href="https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/96282_01"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#D4A03A] text-sm font-medium hover:underline"
+        {/* Search */}
+        <div className="relative max-w-md mb-6">
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--text-3)' }} />
+          <input
+            type="text"
+            placeholder="Search terms or sections..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-10 pr-4 py-2.5 rounded-lg text-sm"
+            style={{
+              backgroundColor: 'var(--surface)',
+              border: '1px solid var(--border)',
+              color: 'var(--text)',
+              fontFamily: 'Inter, sans-serif',
+              outline: 'none',
+            }}
+            onFocus={(e) => {
+              (e.target as HTMLElement).style.borderColor = 'var(--accent)';
+              (e.target as HTMLElement).style.boxShadow = '0 0 0 3px var(--accent-light)';
+            }}
+            onBlur={(e) => {
+              (e.target as HTMLElement).style.borderColor = 'var(--border)';
+              (e.target as HTMLElement).style.boxShadow = 'none';
+            }}
+          />
+        </div>
+
+        <p className="text-sm mb-6" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+          {filteredTerms.length} {filteredTerms.length === 1 ? 'term' : 'terms'}
+        </p>
+
+        {/* Terms Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          {filteredTerms.map((item, index) => (
+            <div
+              key={index}
+              className="rounded-xl border p-5"
+              style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}
             >
-              View Workers Compensation Act
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-            </a>
+              <div className="flex items-start justify-between mb-3 gap-3">
+                <h3 className="font-bold text-base" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+                  {item.term}
+                </h3>
+                <span
+                  className="font-mono text-[10px] px-2 py-1 rounded flex-shrink-0"
+                  style={{
+                    backgroundColor: 'var(--accent-light)',
+                    color: 'var(--accent)',
+                  }}
+                >
+                  {item.section}
+                </span>
+              </div>
+              <p className="text-sm mb-4" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif', lineHeight: '1.55' }}>
+                {item.definition}
+              </p>
+              <div
+                className="flex items-start gap-2 rounded-lg p-3"
+                style={{ backgroundColor: 'var(--attention-light)', border: '1px solid rgba(184,64,64,0.12)' }}
+              >
+                <AlertCircle size={13} style={{ color: 'var(--attention)', flexShrink: 0, marginTop: 2 }} />
+                <p className="text-xs" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
+                  <strong style={{ color: 'var(--attention)' }}>Real impact: </strong>{item.impact}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {filteredTerms.length === 0 && (
+          <div className="text-center py-16">
+            <p className="text-sm" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+              No terms match your search. Try different keywords.
+            </p>
+          </div>
+        )}
+
+        {/* Reference */}
+        <div
+          className="mt-14 rounded-xl border p-6"
+          style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}
+        >
+          <div className="flex items-start gap-4">
+            <div
+              className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+              style={{ backgroundColor: 'var(--accent-light)' }}
+            >
+              <BookOpen size={18} style={{ color: 'var(--accent)' }} />
+            </div>
+            <div>
+              <h3 className="font-bold text-base mb-2" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+                Full Act reference
+              </h3>
+              <p className="text-sm mb-4" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif', lineHeight: '1.55' }}>
+                For the complete Workers Compensation Act, visit BC Laws. Understanding the actual legislation is powerful — it shows you what WorkSafeBC is required to do.
+              </p>
+              <a
+                href="https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/96282_01"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold"
+                style={{ color: 'var(--accent)', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}
+              >
+                View Workers Compensation Act
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>

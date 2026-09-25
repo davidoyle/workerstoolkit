@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { 
-  Search, Filter, ExternalLink, Brain, Activity, 
+import {
+  Search, Filter, ExternalLink, Brain, Activity,
   Briefcase, Clock, AlertCircle, ChevronDown, ChevronUp
 } from 'lucide-react';
 
@@ -91,7 +91,7 @@ const PrecedentsPage = () => {
       category: 'Evidence',
       summary: 'Work need only be a significant contributing factor, not sole cause.',
       fullSummary: 'Worker had pre-existing degenerative changes in their knee. Work activities aggravated the condition, causing new symptoms. The Tribunal found the work was a significant contributing factor to the resulting disability.',
-      keyHolding: 'Under s.5(1), work need only be a significant contributing factor—it does not need to be the sole or primary cause.',
+      keyHolding: 'Under s.5(1), work need only be a significant contributing factor — it does not need to be the sole or primary cause.',
       outcome: 'Appeal allowed. Benefits granted for aggravation.',
       year: '2020',
       tags: ['s.5(1)', 'pre-existing', 'aggravation', 'significant contributing factor'],
@@ -111,7 +111,7 @@ const PrecedentsPage = () => {
 
   const filteredPrecedents = precedents.filter((p) => {
     const matchesFilter = activeFilter === 'All' || p.category === activeFilter;
-    const matchesSearch = 
+    const matchesSearch =
       p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -120,195 +120,225 @@ const PrecedentsPage = () => {
   });
 
   return (
-    <div className="pt-24 pb-16 px-6 lg:px-[8vw] bg-[#0B3C43] min-h-screen">
-      {/* Header */}
-      <div className="mb-8">
-        <span className="eyebrow mb-4 block">WCAT Precedent Library</span>
-        <h1 className="headline-lg text-[#F3EFE6] mb-4">
-          Study the wins.
-        </h1>
-        <p className="body-text text-[#F3EFE6]/70 max-w-[640px]">
-          These decisions aren't luck. They show what evidence, framing, and 
-          persistence can do. Use them to strengthen your own case.
-        </p>
-      </div>
-
-      {/* Search and Filter */}
-      <div className="mb-8 space-y-4">
-        {/* Search */}
-        <div className="relative max-w-md">
-          <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#F3EFE6]/40" />
-          <input
-            type="text"
-            placeholder="Search precedents..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 rounded-xl bg-[#F3EFE6]/5 border border-[#F3EFE6]/15 text-[#F3EFE6] placeholder:text-[#F3EFE6]/40 focus:outline-none focus:border-[#D4A03A]"
-          />
+    <div style={{ backgroundColor: 'var(--bg)' }}>
+      <div className="px-6 lg:px-[8vw] pt-10 pb-16">
+        {/* Header */}
+        <div className="mb-10 max-w-2xl">
+          <p className="eyebrow mb-3">WCAT precedent library</p>
+          <h1 className="headline-lg mb-4" style={{ color: 'var(--text)' }}>
+            Study what won.
+          </h1>
+          <p className="body-text" style={{ color: 'var(--text-2)' }}>
+            These decisions aren't luck. They show what evidence, framing, and persistence can do. Use them to strengthen your own case.
+          </p>
         </div>
 
-        {/* Filters */}
-        <div className="flex flex-wrap items-center gap-2">
-          <Filter size={16} className="text-[#F3EFE6]/50 mr-2" />
-          {categories.map((cat) => {
-            const Icon = cat.icon;
+        {/* How to use */}
+        <div
+          className="rounded-xl border p-5 mb-10"
+          style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}
+        >
+          <p className="font-semibold text-sm mb-4" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+            How to use these precedents
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+            {[
+              'Find precedents in your category (mental health, cumulative trauma, etc.)',
+              'Note the specific Act sections cited in each decision',
+              'Read the full decision to understand the evidence that carried weight',
+              'Use similar language in your submissions and appeals',
+              'Cite precedent numbers when writing to Review Division or WCAT',
+              'Each case is unique, but patterns matter',
+            ].map((tip, idx) => (
+              <div key={idx} className="flex items-start gap-2">
+                <div
+                  className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2"
+                  style={{ backgroundColor: 'var(--accent)' }}
+                />
+                <span className="text-sm" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
+                  {tip}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Search and filters */}
+        <div className="mb-6 space-y-3">
+          <div className="relative max-w-md">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--text-3)' }} />
+            <input
+              type="text"
+              placeholder="Search by keyword, section, or case number..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 rounded-lg text-sm transition-all"
+              style={{
+                backgroundColor: 'var(--surface)',
+                border: '1px solid var(--border)',
+                color: 'var(--text)',
+                fontFamily: 'Inter, sans-serif',
+                outline: 'none',
+              }}
+              onFocus={(e) => {
+                (e.target as HTMLElement).style.borderColor = 'var(--accent)';
+                (e.target as HTMLElement).style.boxShadow = '0 0 0 3px var(--accent-light)';
+              }}
+              onBlur={(e) => {
+                (e.target as HTMLElement).style.borderColor = 'var(--border)';
+                (e.target as HTMLElement).style.boxShadow = 'none';
+              }}
+            />
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <Filter size={14} style={{ color: 'var(--text-3)' }} />
+            {categories.map((cat) => {
+              const Icon = cat.icon;
+              return (
+                <button
+                  key={cat.label}
+                  onClick={() => setActiveFilter(cat.label)}
+                  className={`filter-chip ${activeFilter === cat.label ? 'active' : ''}`}
+                >
+                  {Icon && <Icon size={13} className="mr-1.5" />}
+                  {cat.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <p className="text-sm mb-5" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+          {filteredPrecedents.length} {filteredPrecedents.length === 1 ? 'precedent' : 'precedents'}
+        </p>
+
+        {/* Precedents list */}
+        <div className="space-y-3">
+          {filteredPrecedents.map((precedent) => {
+            const isExpanded = expandedPrecedent === precedent.id;
+
             return (
-              <button
-                key={cat.label}
-                onClick={() => setActiveFilter(cat.label)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  activeFilter === cat.label
-                    ? 'bg-[#D4A03A] text-[#0B3C43]'
-                    : 'bg-[#F3EFE6]/5 text-[#F3EFE6]/70 hover:bg-[#F3EFE6]/10 border border-[#F3EFE6]/15'
-                }`}
+              <div
+                key={precedent.id}
+                className="rounded-xl border overflow-hidden transition-all"
+                style={{
+                  backgroundColor: 'var(--surface)',
+                  borderColor: isExpanded ? 'var(--accent)' : 'var(--border)',
+                }}
               >
-                {Icon && <Icon size={14} className="inline mr-2" />}
-                {cat.label}
-              </button>
+                <button
+                  onClick={() => setExpandedPrecedent(isExpanded ? null : precedent.id)}
+                  className="w-full p-5 text-left"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <span className="font-mono text-xs" style={{ color: 'var(--accent)' }}>
+                          {precedent.id}
+                        </span>
+                        <span className="font-mono text-xs" style={{ color: 'var(--text-3)' }}>
+                          {precedent.year}
+                        </span>
+                        <span
+                          className="text-[10px] font-medium px-2 py-0.5 rounded-full"
+                          style={{
+                            backgroundColor: 'var(--surface-alt)',
+                            color: 'var(--text-2)',
+                            fontFamily: 'Inter, sans-serif',
+                          }}
+                        >
+                          {precedent.category}
+                        </span>
+                      </div>
+                      <h3 className="font-bold text-base mb-1" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+                        {precedent.title}
+                      </h3>
+                      <p className="text-sm" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
+                        {precedent.summary}
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 mt-1">
+                      {isExpanded
+                        ? <ChevronUp size={18} style={{ color: 'var(--text-3)' }} />
+                        : <ChevronDown size={18} style={{ color: 'var(--text-3)' }} />
+                      }
+                    </div>
+                  </div>
+                </button>
+
+                {isExpanded && (
+                  <div className="px-5 pb-5 pt-4" style={{ borderTop: '1px solid var(--border)' }}>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+                          Full summary
+                        </p>
+                        <p className="text-sm leading-relaxed mb-5" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif' }}>
+                          {precedent.fullSummary}
+                        </p>
+                        <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+                          Key holding
+                        </p>
+                        <div className="tip-box">
+                          <p className="text-sm leading-relaxed" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+                            {precedent.keyHolding}
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+                          Outcome
+                        </p>
+                        <p className="text-sm font-semibold mb-5" style={{ color: 'var(--success)', fontFamily: 'Inter, sans-serif' }}>
+                          {precedent.outcome}
+                        </p>
+                        <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+                          Relevant sections
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {precedent.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="px-2 py-1 rounded text-xs font-mono"
+                              style={{
+                                backgroundColor: 'var(--surface-alt)',
+                                color: 'var(--text-2)',
+                                border: '1px solid var(--border)',
+                              }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-5 pt-4" style={{ borderTop: '1px solid var(--border)' }}>
+                      <a
+                        href="https://www.wcat.bc.ca/decisions/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-semibold"
+                        style={{ color: 'var(--accent)', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}
+                      >
+                        View full decision on WCAT website
+                        <ExternalLink size={13} />
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
-      </div>
 
-      {/* Results count */}
-      <p className="body-text text-[#F3EFE6]/50 text-sm mb-6">
-        Showing {filteredPrecedents.length} {filteredPrecedents.length === 1 ? 'precedent' : 'precedents'}
-      </p>
-
-      {/* Precedents List */}
-      <div className="space-y-4">
-        {filteredPrecedents.map((precedent) => {
-          const isExpanded = expandedPrecedent === precedent.id;
-          
-          return (
-            <div
-              key={precedent.id}
-              className={`border border-[#F3EFE6]/15 rounded-[24px] overflow-hidden transition-all ${
-                isExpanded ? 'bg-[#F3EFE6]/5' : 'bg-transparent hover:bg-[#F3EFE6]/5'
-              }`}
-            >
-              <button
-                onClick={() => setExpandedPrecedent(isExpanded ? null : precedent.id)}
-                className="w-full p-6 text-left"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="font-mono text-xs text-[#D4A03A] uppercase tracking-wider">
-                        {precedent.id}
-                      </span>
-                      <span className="font-mono text-xs text-[#F3EFE6]/40">
-                        {precedent.year}
-                      </span>
-                      <span className="px-2 py-0.5 rounded-full bg-[#F3EFE6]/10 text-[#F3EFE6]/60 text-[10px] font-mono uppercase">
-                        {precedent.category}
-                      </span>
-                    </div>
-                    <h3 className="font-heading font-bold text-lg text-[#F3EFE6] mb-2">
-                      {precedent.title}
-                    </h3>
-                    <p className="body-text text-[#F3EFE6]/60 text-sm">
-                      {precedent.summary}
-                    </p>
-                  </div>
-                  <div className="flex-shrink-0">
-                    {isExpanded ? (
-                      <ChevronUp size={24} className="text-[#F3EFE6]/50" />
-                    ) : (
-                      <ChevronDown size={24} className="text-[#F3EFE6]/50" />
-                    )}
-                  </div>
-                </div>
-              </button>
-
-              {isExpanded && (
-                <div className="px-6 pb-6 border-t border-[#F3EFE6]/10 pt-4">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="font-heading font-bold text-sm text-[#F3EFE6] uppercase tracking-wider mb-3">
-                        Full Summary
-                      </h4>
-                      <p className="body-text text-[#F3EFE6]/70 text-sm mb-4">
-                        {precedent.fullSummary}
-                      </p>
-                      <h4 className="font-heading font-bold text-sm text-[#F3EFE6] uppercase tracking-wider mb-3">
-                        Key Holding
-                      </h4>
-                      <div className="bg-[#D4A03A]/10 rounded-xl p-4">
-                        <p className="body-text text-[#F3EFE6] text-sm">
-                          {precedent.keyHolding}
-                        </p>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="font-heading font-bold text-sm text-[#F3EFE6] uppercase tracking-wider mb-3">
-                        Outcome
-                      </h4>
-                      <p className="body-text text-[#D4A03A] text-sm mb-4">
-                        {precedent.outcome}
-                      </p>
-                      <h4 className="font-heading font-bold text-sm text-[#F3EFE6] uppercase tracking-wider mb-3">
-                        Relevant Sections
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {precedent.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1 rounded-full bg-[#F3EFE6]/10 text-[#F3EFE6]/70 text-xs font-mono"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-6 pt-4 border-t border-[#F3EFE6]/10">
-                    <a
-                      href={`https://www.wcat.bc.ca/decisions/`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-[#D4A03A] text-sm font-medium hover:underline"
-                    >
-                      View full decision on WCAT website
-                      <ExternalLink size={14} />
-                    </a>
-                  </div>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Empty state */}
-      {filteredPrecedents.length === 0 && (
-        <div className="text-center py-16">
-          <p className="body-text text-[#F3EFE6]/50">
-            No precedents match your search. Try different keywords or filters.
-          </p>
-        </div>
-      )}
-
-      {/* How to Use Precedents */}
-      <div className="mt-16 border border-[#D4A03A]/30 rounded-[28px] p-6 lg:p-8 bg-[#D4A03A]/5">
-        <h3 className="font-heading font-bold text-lg text-[#F3EFE6] mb-4">
-          How to Use These Precedents
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[
-            'Find precedents in your category (mental health, cumulative trauma, etc.)',
-            'Note the specific Act sections cited in each decision',
-            'Read the full decision to understand the evidence that carried weight',
-            'Use similar language in your submissions and appeals',
-            'Cite precedent numbers when writing to Review Division or WCAT',
-            'Remember: each case is unique, but patterns matter',
-          ].map((tip, idx) => (
-            <div key={idx} className="flex items-start gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#D4A03A] mt-2 flex-shrink-0" />
-              <span className="body-text text-[#F3EFE6]/70 text-sm">{tip}</span>
-            </div>
-          ))}
-        </div>
+        {filteredPrecedents.length === 0 && (
+          <div className="text-center py-16">
+            <p className="text-sm" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+              No precedents match your search. Try different keywords or filters.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

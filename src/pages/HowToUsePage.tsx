@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
+import {
   FolderOpen, Scale, Mail, BookMarked, ChevronDown, ChevronUp,
   FileText, Phone, ClipboardCheck, AlertTriangle, Download, ArrowRight
 } from 'lucide-react';
 
 const HowToUsePage = () => {
-  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [expandedCard, setExpandedCard] = useState<string | null>('secure');
 
   const toggleCard = (card: string) => {
     setExpandedCard(expandedCard === card ? null : card);
@@ -20,14 +20,14 @@ const HowToUsePage = () => {
       description: 'Save decisions, photos, texts, call logs.',
       icon: FolderOpen,
       content: {
-        intro: 'If it isn\'t documented, they\'ll swear it never happened. WorkSafeBC lives on paper (and pixels). Phone calls vanish. "Misunderstandings" appear. Memories get fuzzy.',
+        intro: 'If it isn\'t documented, they\'ll swear it never happened. WorkSafeBC lives on paper — and pixels. Phone calls vanish. Misunderstandings appear. Memories get convenient.',
         checklist: [
           'Medical & Health Evidence: Doctor reports, specialist consultations, physiotherapy reports, imaging results',
           'WorkSafeBC Documents: Claim letters, decisions, case manager emails, portal messages',
           'Employer Evidence: Incident reports, emails about modified duties, performance issues',
           'Financial Evidence: Pay stubs, EI records, rent statements, eviction threats',
         ],
-        action: 'Start a simple timeline today. Write down 5-10 key dates: injury, first doctor visit, first decision, any big changes.',
+        action: 'Start a simple timeline today. Write down 5–10 key dates: injury, first doctor visit, first decision, any big changes.',
         link: '/tools',
         linkText: 'Get documentation templates',
       },
@@ -46,7 +46,7 @@ const HowToUsePage = () => {
           'Section 244: Review Division procedures and timelines',
           'Section 285: WCAT jurisdiction and standards',
         ],
-        action: 'Learn the key terms: "arising out of employment," "significant contributing factor," "preponderance of evidence."',
+        action: 'Learn three key phrases: "arising out of employment," "significant contributing factor," "preponderance of evidence." These are the tests they have to meet.',
         link: '/glossary',
         linkText: 'View full glossary',
       },
@@ -58,14 +58,14 @@ const HowToUsePage = () => {
       description: 'Use the words that create accountability.',
       icon: Mail,
       content: {
-        intro: 'You don\'t need to be a lawyer. You need to ask the right questions—on paper. Written communication creates a record they can\'t ignore.',
+        intro: 'You don\'t need to be a lawyer. You need to ask the right questions — on paper. Written communication creates a record they can\'t ignore.',
         checklist: [
-          'Email to WorkSafeBC: Request specific evidence they relied on',
+          'Email to WorkSafeBC: Request the specific evidence they relied on',
           'Letter to your MLA: Frame as oversight, not casework',
           'Minister escalation: Document systemic patterns, not just your case',
           'Ombudsperson complaint: When internal processes fail',
         ],
-        action: 'Always write, never just call. If you do call, follow up with an email summarizing what was discussed.',
+        action: 'Always write, never just call. If you do call, follow up immediately with an email summarizing what was discussed.',
         link: '/email-templates',
         linkText: 'Copy email templates',
       },
@@ -73,18 +73,18 @@ const HowToUsePage = () => {
     {
       id: 'study',
       number: '4',
-      title: 'Study the wins',
+      title: 'Study what won',
       description: 'WCAT decisions show what actually works.',
       icon: BookMarked,
       content: {
         intro: 'Other workers have faced similar battles and won. WCAT decisions are public record and show what evidence, framing, and persistence can achieve.',
         checklist: [
-          'Mental disorder claims: A1900037 - refusal to accommodate as stressor',
-          'Cumulative trauma: A2101129 - repeated minor incidents as compensable',
-          'No clear diagnosis: 2004-06686 - mechanism + credible evidence sufficient',
-          'Late applications: 2014-01368 - mental disorder delaying filing',
+          'Mental disorder claims: A1900037 — refusal to accommodate as stressor',
+          'Cumulative trauma: A2101129 — repeated minor incidents as compensable',
+          'No clear diagnosis: 2004-06686 — mechanism + credible evidence sufficient',
+          'Late applications: 2014-01368 — mental disorder delaying filing',
         ],
-        action: 'Read decisions in your category. Note the evidence that carried weight and the arguments that succeeded.',
+        action: 'Read decisions in your category. Note what evidence carried weight and which legal arguments succeeded. Then use that language in your own submissions.',
         link: '/precedents',
         linkText: 'Browse all precedents',
       },
@@ -92,161 +92,183 @@ const HowToUsePage = () => {
   ];
 
   const quickStart = [
-    { title: 'Claim Timeline', icon: FileText, desc: 'One page with dates, decisions, what changed' },
-    { title: 'Call Log', icon: Phone, desc: 'Who, when, what was promised' },
+    { title: 'Claim Timeline', icon: FileText, desc: 'One page: dates, decisions, what changed' },
+    { title: 'Call Log', icon: Phone, desc: 'Who you spoke to, when, what was promised' },
     { title: 'Evidence Checklist', icon: ClipboardCheck, desc: 'Photos, texts, reports, forms' },
     { title: 'Violation Tracker', icon: AlertTriangle, desc: 'Match their actions to Act sections' },
   ];
 
   return (
-    <div className="pt-24 pb-16 px-6 lg:px-[8vw] bg-[#0B3C43] min-h-screen">
-      {/* Header */}
-      <div className="mb-12">
-        <span className="eyebrow mb-4 block">How to use this</span>
-        <h1 className="headline-lg text-[#F3EFE6] mb-4">
-          The First Four Moves
-        </h1>
-        <p className="body-text text-[#F3EFE6]/70 max-w-[640px]">
-          You don't need to learn everything. Start here. Each move builds on the last, 
-          turning your experience into evidence they can't dismiss.
-        </p>
-      </div>
+    <div style={{ backgroundColor: 'var(--bg)' }}>
+      <div className="px-6 lg:px-[8vw] pt-10 pb-16">
+        {/* Header */}
+        <div className="mb-10 max-w-2xl">
+          <p className="eyebrow mb-3">How to use this</p>
+          <h1 className="headline-lg mb-4" style={{ color: 'var(--text)' }}>
+            The first four moves.
+          </h1>
+          <p className="body-text" style={{ color: 'var(--text-2)' }}>
+            You don't need to learn everything. Start here. Each move builds on the last, turning your experience into evidence they can't dismiss.
+          </p>
+        </div>
 
-      {/* Expandable Cards */}
-      <div className="space-y-4 mb-16">
-        {moves.map((move) => {
-          const Icon = move.icon;
-          const isExpanded = expandedCard === move.id;
-          
-          return (
-            <div
-              key={move.id}
-              className={`border border-[#F3EFE6]/15 rounded-[28px] overflow-hidden transition-all ${
-                isExpanded ? 'bg-[#F3EFE6]/5' : 'bg-transparent hover:bg-[#F3EFE6]/5'
-              }`}
-            >
-              <button
-                onClick={() => toggleCard(move.id)}
-                className="w-full p-6 lg:p-8 flex items-start gap-6 text-left"
+        {/* Warning box */}
+        <div className="attention-box mb-10 max-w-2xl">
+          <div className="flex items-start gap-3 mb-3">
+            <AlertTriangle size={17} style={{ color: 'var(--attention)', flexShrink: 0, marginTop: 1 }} />
+            <p className="font-semibold text-sm" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+              Before you do anything else
+            </p>
+          </div>
+          <ul className="space-y-2">
+            {[
+              "Don't call just to 'talk it through' with no notes.",
+              "Don't agree to anything on the phone you don't understand.",
+              "Don't send a rage email you can't walk back.",
+            ].map((item, idx) => (
+              <li key={idx} className="text-sm" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif', lineHeight: '1.55' }}>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="text-sm mt-3" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif', lineHeight: '1.6' }}>
+            <strong>Do this first:</strong> Save a copy of whatever they sent. Write the date, what they decided, and how it affects you. Then take ten minutes to figure out what kind of issue it is.
+          </p>
+        </div>
+
+        {/* Expandable move cards */}
+        <div className="space-y-3 mb-14">
+          {moves.map((move) => {
+            const Icon = move.icon;
+            const isExpanded = expandedCard === move.id;
+
+            return (
+              <div
+                key={move.id}
+                className="rounded-xl border overflow-hidden transition-all"
+                style={{
+                  backgroundColor: 'var(--surface)',
+                  borderColor: isExpanded ? 'var(--accent)' : 'var(--border)',
+                }}
               >
-                <div className="w-14 h-14 rounded-xl bg-[#D4A03A]/15 flex items-center justify-center flex-shrink-0">
-                  <Icon size={28} className="text-[#D4A03A]" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="font-mono text-xs text-[#D4A03A] uppercase tracking-wider mb-2 block">
-                        Move {move.number}
-                      </span>
-                      <h3 className="font-heading font-bold text-xl lg:text-2xl text-[#F3EFE6]">
-                        {move.title}
-                      </h3>
-                    </div>
-                    {isExpanded ? (
-                      <ChevronUp size={24} className="text-[#F3EFE6]/50" />
-                    ) : (
-                      <ChevronDown size={24} className="text-[#F3EFE6]/50" />
-                    )}
+                <button
+                  onClick={() => toggleCard(move.id)}
+                  className="w-full p-5 lg:p-6 flex items-start gap-5 text-left"
+                >
+                  <div
+                    className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: 'var(--accent-light)' }}
+                  >
+                    <Icon size={22} style={{ color: 'var(--accent)' }} />
                   </div>
-                  <p className="body-text text-[#F3EFE6]/60 mt-2">{move.description}</p>
-                </div>
-              </button>
-              
-              {isExpanded && (
-                <div className="px-6 lg:px-8 pb-8 pl-[92px] lg:pl-[108px]">
-                  <div className="border-t border-[#F3EFE6]/10 pt-6">
-                    <p className="body-text text-[#F3EFE6]/80 mb-6 max-w-[720px]">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-4">
+                      <div>
+                        <p className="font-mono text-xs mb-1" style={{ color: 'var(--text-3)' }}>
+                          Move {move.number}
+                        </p>
+                        <h3 className="font-bold text-lg" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+                          {move.title}
+                        </h3>
+                      </div>
+                      {isExpanded
+                        ? <ChevronUp size={20} style={{ color: 'var(--text-3)', flexShrink: 0 }} />
+                        : <ChevronDown size={20} style={{ color: 'var(--text-3)', flexShrink: 0 }} />
+                      }
+                    </div>
+                    <p className="text-sm mt-1" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif' }}>
+                      {move.description}
+                    </p>
+                  </div>
+                </button>
+
+                {isExpanded && (
+                  <div
+                    className="px-5 lg:px-6 pb-6 pt-4"
+                    style={{ borderTop: '1px solid var(--border)' }}
+                  >
+                    <p className="body-text mb-5" style={{ color: 'var(--text-2)' }}>
                       {move.content.intro}
                     </p>
-                    
-                    <h4 className="font-heading font-bold text-sm text-[#F3EFE6] uppercase tracking-wider mb-4">
-                      Key Points
-                    </h4>
-                    <ul className="space-y-3 mb-6">
+
+                    <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+                      Key points
+                    </p>
+                    <ul className="space-y-2 mb-5">
                       {move.content.checklist.map((item, idx) => (
                         <li key={idx} className="flex items-start gap-3">
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#D4A03A] mt-2 flex-shrink-0" />
-                          <span className="body-text text-[#F3EFE6]/70 text-sm">{item}</span>
+                          <div
+                            className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2"
+                            style={{ backgroundColor: 'var(--accent)' }}
+                          />
+                          <span className="text-sm" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif', lineHeight: '1.55' }}>
+                            {item}
+                          </span>
                         </li>
                       ))}
                     </ul>
-                    
-                    <div className="bg-[#D4A03A]/10 rounded-xl p-4 mb-6">
-                      <p className="body-text text-[#F3EFE6] text-sm">
+
+                    <div className="tip-box mb-5">
+                      <p className="text-sm" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif', lineHeight: '1.6' }}>
                         <strong>Action step:</strong> {move.content.action}
                       </p>
                     </div>
-                    
-                    <Link
-                      to={move.content.link}
-                      className="btn-primary inline-flex"
-                    >
+
+                    <Link to={move.content.link} className="btn-primary inline-flex">
                       {move.content.linkText}
-                      <ArrowRight size={18} />
+                      <ArrowRight size={15} />
                     </Link>
                   </div>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Quick Start Tools */}
-      <div className="mb-16">
-        <h2 className="headline-md text-[#F3EFE6] mb-6">
-          Quick Start Tools
-        </h2>
-        <p className="body-text text-[#F3EFE6]/70 mb-8 max-w-[600px]">
-          Download these templates to start building your record today. 
-          Print them out or fill them in digitally—whatever works for you.
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {quickStart.map((tool) => {
-            const Icon = tool.icon;
-            return (
-              <div key={tool.title} className="card">
-                <div className="w-12 h-12 rounded-xl bg-[#D4A03A]/15 flex items-center justify-center mb-4">
-                  <Icon size={24} className="text-[#D4A03A]" />
-                </div>
-                <h3 className="font-heading font-bold text-base text-[#F3EFE6] mb-2">
-                  {tool.title}
-                </h3>
-                <p className="body-text text-[#F3EFE6]/60 text-sm mb-4">
-                  {tool.desc}
-                </p>
-                <button className="flex items-center gap-2 text-[#D4A03A] text-sm font-medium hover:underline">
-                  <Download size={16} />
-                  Download PDF
-                </button>
+                )}
               </div>
             );
           })}
         </div>
-      </div>
 
-      {/* Warning Box */}
-      <div className="border border-[#D4A03A]/30 rounded-[28px] p-6 lg:p-8 bg-[#D4A03A]/5">
-        <h3 className="font-heading font-bold text-lg text-[#F3EFE6] mb-4">
-          Before You Do Anything Else
-        </h3>
-        <ul className="space-y-3 mb-6">
-          {[
-            "Don't call just to 'talk it through' with no notes.",
-            "Don't agree to anything on the phone you don't understand.",
-            "Don't send a rage email you can't walk back.",
-          ].map((item, idx) => (
-            <li key={idx} className="flex items-start gap-3">
-              <AlertTriangle size={18} className="text-[#D4A03A] mt-0.5 flex-shrink-0" />
-              <span className="body-text text-[#F3EFE6]/70">{item}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="body-text text-[#F3EFE6]/80">
-          Do this first: Save a copy of whatever they sent. Write the date, what they decided, 
-          and how it hits you. Then take 10 minutes to figure out what kind of issue it is.
-        </p>
+        {/* Quick start tools */}
+        <div className="mb-14">
+          <div className="mb-6">
+            <p className="eyebrow mb-2">Quick start</p>
+            <h2 className="headline-md mb-2" style={{ color: 'var(--text)' }}>
+              Download these now.
+            </h2>
+            <p className="body-text" style={{ color: 'var(--text-2)' }}>
+              Print them out or fill them in digitally. Start building your record today.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {quickStart.map((tool) => {
+              const Icon = tool.icon;
+              return (
+                <div
+                  key={tool.title}
+                  className="p-5 rounded-xl border"
+                  style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}
+                >
+                  <div
+                    className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                    style={{ backgroundColor: 'var(--accent-light)' }}
+                  >
+                    <Icon size={20} style={{ color: 'var(--accent)' }} />
+                  </div>
+                  <h3 className="font-semibold text-sm mb-1" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+                    {tool.title}
+                  </h3>
+                  <p className="text-xs mb-4" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
+                    {tool.desc}
+                  </p>
+                  <button
+                    className="flex items-center gap-2 text-sm font-medium"
+                    style={{ color: 'var(--accent)', fontFamily: 'Inter, sans-serif' }}
+                  >
+                    <Download size={14} />
+                    Download PDF
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

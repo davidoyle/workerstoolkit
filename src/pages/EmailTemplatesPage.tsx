@@ -134,7 +134,7 @@ The issues I am experiencing include:
 - [e.g., Failure to respond to my requests for information]
 - [e.g., Other specific issues]
 
-These issues appear to be part of a broader pattern that has been documented in independent reviews and ombudsperson reports regarding WorkSafeBC's treatment of injured workers.
+These issues appear to be part of a broader pattern documented in independent reviews and ombudsperson reports regarding WorkSafeBC's treatment of injured workers.
 
 I am requesting:
 1. Your office's assistance in getting WorkSafeBC to address my specific concerns
@@ -251,91 +251,114 @@ Sincerely,
   ];
 
   return (
-    <div className="pt-24 pb-16 px-6 lg:px-[8vw] bg-[#0B3C43] min-h-screen">
-      {/* Header */}
-      <div className="mb-10">
-        <span className="eyebrow mb-4 block">Email Templates</span>
-        <h1 className="headline-lg text-[#F3EFE6] mb-4">
-          Use the words that create accountability.
-        </h1>
-        <p className="body-text text-[#F3EFE6]/70 max-w-[640px]">
-          These templates are starting points. Customize them with your specific facts, 
-          dates, and details. Always keep copies of everything you send.
-        </p>
-      </div>
+    <div style={{ backgroundColor: 'var(--bg)' }}>
+      <div className="px-6 lg:px-[8vw] pt-10 pb-16">
+        {/* Header */}
+        <div className="mb-10 max-w-2xl">
+          <p className="eyebrow mb-3">Email templates</p>
+          <h1 className="headline-lg mb-4" style={{ color: 'var(--text)' }}>
+            Use the words that create accountability.
+          </h1>
+          <p className="body-text" style={{ color: 'var(--text-2)' }}>
+            These are starting points. Customize them with your specific facts, dates, and details. Always keep copies of everything you send.
+          </p>
+        </div>
 
-      {/* Templates */}
-      <div className="space-y-6">
-        {templates.map((template) => {
-          const Icon = template.icon;
-          const isCopied = copiedId === template.id;
-          
-          return (
-            <div key={template.id} className="card overflow-hidden">
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#D4A03A]/15 flex items-center justify-center flex-shrink-0">
-                    <Icon size={22} className="text-[#D4A03A]" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-lg text-[#F3EFE6] mb-1">
-                      {template.title}
-                    </h3>
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-[10px] text-[#D4A03A] uppercase tracking-wider">
-                        To: {template.recipient}
-                      </span>
-                      <span className="font-mono text-[10px] text-[#F3EFE6]/40">
-                        {template.purpose}
-                      </span>
+        {/* Best practices */}
+        <div
+          className="rounded-xl border p-5 mb-10"
+          style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}
+        >
+          <div className="flex items-center gap-2 mb-4">
+            <Mail size={16} style={{ color: 'var(--accent)' }} />
+            <p className="font-semibold text-sm" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+              Email best practices
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+            {[
+              'Always use email, not just phone calls',
+              'Reference specific dates and decision numbers',
+              'Keep your tone professional, even when frustrated',
+              'Attach supporting documents when relevant',
+              'Save a copy of every email you send',
+              'Follow up if you don\'t get a response in 2 weeks',
+              'Cc your MLA on important correspondence',
+              'Use read receipts for critical communications',
+            ].map((tip, idx) => (
+              <div key={idx} className="flex items-start gap-2">
+                <div
+                  className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2"
+                  style={{ backgroundColor: 'var(--accent)' }}
+                />
+                <span className="text-sm" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
+                  {tip}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Templates */}
+        <div className="space-y-5">
+          {templates.map((template) => {
+            const Icon = template.icon;
+            const isCopied = copiedId === template.id;
+
+            return (
+              <div
+                key={template.id}
+                className="rounded-xl border overflow-hidden"
+                style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}
+              >
+                <div className="flex items-start justify-between gap-4 p-5 pb-4">
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ backgroundColor: 'var(--accent-light)' }}
+                    >
+                      <Icon size={18} style={{ color: 'var(--accent)' }} />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-base mb-1" style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>
+                        {template.title}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <span className="font-mono text-[10px] uppercase tracking-wide" style={{ color: 'var(--accent)' }}>
+                          To: {template.recipient}
+                        </span>
+                        <span className="text-xs" style={{ color: 'var(--text-3)', fontFamily: 'Inter, sans-serif' }}>
+                          {template.purpose}
+                        </span>
+                      </div>
                     </div>
                   </div>
+                  <button
+                    onClick={() => copyToClipboard(template.content, template.id)}
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold transition-all flex-shrink-0"
+                    style={{
+                      backgroundColor: isCopied ? 'var(--success-light)' : 'var(--surface-alt)',
+                      color: isCopied ? 'var(--success)' : 'var(--text)',
+                      border: `1px solid ${isCopied ? 'rgba(46,125,82,0.2)' : 'var(--border)'}`,
+                      fontFamily: 'Inter, sans-serif',
+                    }}
+                  >
+                    {isCopied ? <Check size={14} /> : <Copy size={14} />}
+                    {isCopied ? 'Copied' : 'Copy'}
+                  </button>
                 </div>
-                <button
-                  onClick={() => copyToClipboard(template.content, template.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    isCopied
-                      ? 'bg-green-500/20 text-green-400'
-                      : 'bg-[#F3EFE6]/10 text-[#F3EFE6] hover:bg-[#F3EFE6]/20'
-                  }`}
-                >
-                  {isCopied ? <Check size={16} /> : <Copy size={16} />}
-                  {isCopied ? 'Copied!' : 'Copy'}
-                </button>
-              </div>
-              
-              <div className="bg-[#0B3C43] rounded-xl p-4 border border-[#F3EFE6]/10 overflow-x-auto">
-                <pre className="body-text text-[#F3EFE6]/80 text-sm whitespace-pre-wrap font-mono leading-relaxed">
-                  {template.content}
-                </pre>
-              </div>
-            </div>
-          );
-        })}
-      </div>
 
-      {/* Tips */}
-      <div className="mt-12 border border-[#D4A03A]/30 rounded-[28px] p-6 lg:p-8 bg-[#D4A03A]/5">
-        <h3 className="font-heading font-bold text-lg text-[#F3EFE6] mb-4 flex items-center gap-3">
-          <Mail size={20} className="text-[#D4A03A]" />
-          Email Best Practices
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[
-            'Always use email, not just phone calls',
-            'Keep your tone professional, even when frustrated',
-            'Reference specific dates and decision numbers',
-            'Attach supporting documents when relevant',
-            'Save a copy of every email you send',
-            'Follow up if you don\'t get a response in 2 weeks',
-            'Cc your MLA on important correspondence',
-            'Use read receipts for critical communications',
-          ].map((tip, idx) => (
-            <div key={idx} className="flex items-start gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#D4A03A] mt-2 flex-shrink-0" />
-              <span className="body-text text-[#F3EFE6]/70 text-sm">{tip}</span>
-            </div>
-          ))}
+                <div
+                  className="mx-5 mb-5 rounded-lg overflow-x-auto"
+                  style={{ backgroundColor: 'var(--bg)', border: '1px solid var(--border)' }}
+                >
+                  <pre className="p-4 text-xs leading-relaxed whitespace-pre-wrap" style={{ color: 'var(--text-2)', fontFamily: 'IBM Plex Mono, monospace' }}>
+                    {template.content}
+                  </pre>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
