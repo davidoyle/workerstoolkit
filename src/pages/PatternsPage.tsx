@@ -132,7 +132,7 @@ const PatternsPage = () => {
             style={{ color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}
           >
             <TrendingUp size={20} style={{ color: 'var(--accent)' }} />
-            Top 5 most reported denial tactics
+            The five most common denial patterns
           </h2>
 
           <div className="space-y-3">

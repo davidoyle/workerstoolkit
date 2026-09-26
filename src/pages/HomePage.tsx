@@ -33,13 +33,13 @@ const HomePage = () => {
     {
       number: '1',
       title: 'Secure the evidence',
-      description: 'Save decisions, photos, texts, call logs. If it isn\'t documented, they\'ll say it never happened.',
+      description: 'Save decisions, photos, texts, and call logs. If it is not documented, it can be disputed or denied.',
       link: '/tools',
     },
     {
       number: '2',
       title: 'Identify violations',
-      description: 'Map what they did to what the Act requires. Section by section.',
+      description: 'Compare what they did to what the Act requires. Work through it section by section.',
       link: '/glossary',
     },
     {
@@ -84,7 +84,7 @@ const HomePage = () => {
             Your claim deserves a fair fight.
           </h1>
           <p className="body-text mb-8" style={{ color: 'var(--text-2)', maxWidth: '520px' }}>
-            A practical toolkit for injured workers in BC navigating WorkSafeBC — evidence templates, appeal language, WCAT precedents, and the strategies that actually work.
+            A practical toolkit for injured workers in BC navigating WorkSafeBC. It includes evidence templates, appeal language, WCAT precedents, and strategies that work.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link to="/how-to-use" className="btn-primary">
@@ -157,7 +157,7 @@ const HomePage = () => {
             The first four moves.
           </h2>
           <p className="body-text" style={{ color: 'var(--text-2)' }}>
-            You don't need to learn everything. Start here. Each move builds on the last.
+            You do not need to learn everything at once. Start here. Each step builds on the one before.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">

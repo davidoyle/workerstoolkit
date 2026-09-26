@@ -91,7 +91,7 @@ const PrecedentsPage = () => {
       category: 'Evidence',
       summary: 'Work need only be a significant contributing factor, not sole cause.',
       fullSummary: 'Worker had pre-existing degenerative changes in their knee. Work activities aggravated the condition, causing new symptoms. The Tribunal found the work was a significant contributing factor to the resulting disability.',
-      keyHolding: 'Under s.5(1), work need only be a significant contributing factor — it does not need to be the sole or primary cause.',
+      keyHolding: 'Under s.5(1), work need only be a significant contributing factor. It does not need to be the sole or primary cause.',
       outcome: 'Appeal allowed. Benefits granted for aggravation.',
       year: '2020',
       tags: ['s.5(1)', 'pre-existing', 'aggravation', 'significant contributing factor'],

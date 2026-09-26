@@ -75,7 +75,7 @@ const CollectiveActionPage = () => {
             Change happens when we act together.
           </h1>
           <p className="body-text" style={{ color: 'var(--text-2)' }}>
-            Individual appeals matter. Systemic change requires collective pressure. Here's how to add your voice.
+            Individual appeals matter. Systemic change also requires collective action. Here is how to add your voice.
           </p>
         </div>
 

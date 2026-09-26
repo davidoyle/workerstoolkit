@@ -20,7 +20,7 @@ const HowToUsePage = () => {
       description: 'Save decisions, photos, texts, call logs.',
       icon: FolderOpen,
       content: {
-        intro: 'If it isn\'t documented, they\'ll swear it never happened. WorkSafeBC lives on paper — and pixels. Phone calls vanish. Misunderstandings appear. Memories get convenient.',
+        intro: 'If it is not documented, it can be disputed or denied. WorkSafeBC runs on paper and digital records. Phone calls are not tracked. Details get misremembered. Written records protect you.',
         checklist: [
           'Medical & Health Evidence: Doctor reports, specialist consultations, physiotherapy reports, imaging results',
           'WorkSafeBC Documents: Claim letters, decisions, case manager emails, portal messages',
@@ -39,7 +39,7 @@ const HowToUsePage = () => {
       description: 'Map what they did to what the Act requires.',
       icon: Scale,
       content: {
-        intro: 'WorkSafeBC must follow the Workers Compensation Act. When they don\'t, you have leverage. The key is knowing which sections apply to your situation.',
+        intro: 'WorkSafeBC must follow the Workers Compensation Act. When they do not, you may have grounds for a review or appeal. The key is knowing which sections apply to your situation.',
         checklist: [
           'Section 5: Compensation for personal injury arising out of employment',
           'Section 151: Right to request medical reports and evidence',
@@ -58,7 +58,7 @@ const HowToUsePage = () => {
       description: 'Use the words that create accountability.',
       icon: Mail,
       content: {
-        intro: 'You don\'t need to be a lawyer. You need to ask the right questions — on paper. Written communication creates a record they can\'t ignore.',
+        intro: 'You do not need to be a lawyer. You need to ask the right questions. Put them in writing. Written communication creates a record that must be addressed.',
         checklist: [
           'Email to WorkSafeBC: Request the specific evidence they relied on',
           'Letter to your MLA: Frame as oversight, not casework',
@@ -77,12 +77,12 @@ const HowToUsePage = () => {
       description: 'WCAT decisions show what actually works.',
       icon: BookMarked,
       content: {
-        intro: 'Other workers have faced similar battles and won. WCAT decisions are public record and show what evidence, framing, and persistence can achieve.',
+        intro: 'Other workers have been in similar situations and succeeded. WCAT decisions are public record. They show what evidence and what arguments actually worked.',
         checklist: [
-          'Mental disorder claims: A1900037 — refusal to accommodate as stressor',
-          'Cumulative trauma: A2101129 — repeated minor incidents as compensable',
-          'No clear diagnosis: 2004-06686 — mechanism + credible evidence sufficient',
-          'Late applications: 2014-01368 — mental disorder delaying filing',
+          'Mental disorder claims: A1900037, refusal to accommodate as stressor',
+          'Cumulative trauma: A2101129, repeated minor incidents as compensable',
+          'No clear diagnosis: 2004-06686, mechanism and credible evidence sufficient',
+          'Late applications: 2014-01368, mental disorder delaying filing',
         ],
         action: 'Read decisions in your category. Note what evidence carried weight and which legal arguments succeeded. Then use that language in your own submissions.',
         link: '/precedents',
@@ -122,9 +122,9 @@ const HowToUsePage = () => {
           </div>
           <ul className="space-y-2">
             {[
-              "Don't call just to 'talk it through' with no notes.",
-              "Don't agree to anything on the phone you don't understand.",
-              "Don't send a rage email you can't walk back.",
+              "Do not call without notes ready.",
+              "Do not agree to anything on the phone that you do not understand.",
+              "Do not write an email when you are angry. Wait first.",
             ].map((item, idx) => (
               <li key={idx} className="text-sm" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif', lineHeight: '1.55' }}>
                 {item}

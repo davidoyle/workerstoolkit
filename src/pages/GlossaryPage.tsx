@@ -19,7 +19,7 @@ const GlossaryPage = () => {
     },
     {
       term: 'Significant contributing factor',
-      definition: 'The standard for determining if work caused or aggravated an injury. The work does not need to be the sole or primary cause—just a significant one.',
+      definition: 'The standard for determining if work caused or aggravated an injury. The work does not need to be the sole or primary cause. It only needs to be a significant one.',
       impact: 'This is a lower threshold than many workers realize. Pre-existing conditions can still be compensable if work significantly contributed.',
       section: 's.5(1)',
     },
@@ -144,7 +144,7 @@ const GlossaryPage = () => {
             Know what they're saying.
           </h1>
           <p className="body-text" style={{ color: 'var(--text-2)' }}>
-            Understanding the language is half the battle. These are the key terms you'll encounter and what they actually mean for your claim.
+            Understanding the language matters. These are the key terms you will encounter and what they mean for your claim.
           </p>
         </div>
 
@@ -242,7 +242,7 @@ const GlossaryPage = () => {
                 Full Act reference
               </h3>
               <p className="text-sm mb-4" style={{ color: 'var(--text-2)', fontFamily: 'Inter, sans-serif', lineHeight: '1.55' }}>
-                For the complete Workers Compensation Act, visit BC Laws. Understanding the actual legislation is powerful — it shows you what WorkSafeBC is required to do.
+                For the complete Workers Compensation Act, visit BC Laws. Understanding the actual legislation is powerful. It shows you what WorkSafeBC is required to do.
               </p>
               <a
                 href="https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/96282_01"
